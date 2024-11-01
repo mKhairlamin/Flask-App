@@ -1,26 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page with Button</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <button onclick="alert('Button Clicked!')">Click Me</button>
-</body>
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+		<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>CARISMA</title>
+
+        <!-- website logo -->
+		<link rel="shortcut icon" type="image/icon" href="assets/logo/logo.png"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="assets/css/linearicons.css">
+
+        <!--flaticon.css-->
+		<link rel="stylesheet" href="assets/css/flaticon.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="assets/css/animate.css">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+	
+	<body>
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+	
+		<!--welcome-hero start -->
+		<section id="home" class="welcome-hero">
+
+			<!-- top-area Start -->
+			<div class="top-area">
+				<div class="header-area">
+					<!-- Start Navigation -->
+				    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+				        <div class="container">
+
+				            <!-- Start Header Navigation -->
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand">CARISMA<span></span></a>
+
+				            </div><!--/.navbar-header-->
+				            <!-- End Header Navigation -->
+
+				            <!-- Collect the nav links, forms, and other content for toggling -->
+				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class=" scroll active"><a href="#home">home</a></li>
+									<li class="scroll"><a href="#new-cars">new cars</a></li>
+				                    <li class="scroll"><a href="#featured-cars">featured cars</a></li>
+				                    <li class="scroll"><a href="#brand">brands</a></li>
+				                </ul><!--/.nav -->
+				            </div><!-- /.navbar-collapse -->
+				        </div><!--/.container-->
+				    </nav><!--/nav-->
+				    <!-- End Navigation -->
+				</div><!--/.header-area-->
+
+			    <div class="clearfix"></div>
+
+			</div><!-- /.top-area-->
+			<!-- top-area End -->
+
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>Find Your Ideal Car at a Price That Makes Sense!</h2>
+                    <button class="welcome-btn" onclick="window.location.href='{{ url_for('find_car') }}'">FIND YOURS NOW</button>
+				</div>
+			</div>
+
+
+		</section><!--/.welcome-hero-->
+		<!--welcome-hero end -->
+
+		<!--new-cars start -->
+		<section id="new-cars" class="new-cars">
+			<div class="container">
+				<div class="section-header">
+					<br>
+					<h2>newest cars</h2>
+				</div><!--/.section-header-->
+				<div class="new-cars-content">
+					<div class="owl-carousel owl-theme" id="new-cars-carousel">
+						<div class="new-cars-item">
+							<div class="single-new-cars-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="new-cars-img">
+											<img src="assets/images/new-cars-model/ncm1.png" alt="img"/>
+										</div><!--/.new-cars-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="new-cars-txt">
+											<h2>Proton X50</h2>
+											<p class="new-cars-para2">
+												Discover the Proton X50, a sleek and stylish compact SUV designed to turn heads with its modern aesthetics. 
+												Equipped with advanced technology and safety features, the X50 offers both luxury and peace of mind on the road. 
+												Experience driving redefined with the Proton X50, where style meets functionality seamlessly.
+											</p>
+										</div><!--/.new-cars-txt-->	
+									</div><!--/.col-->
+								</div><!--/.row-->
+							</div><!--/.single-new-cars-item-->
+						</div><!--/.new-cars-item-->
+						<div class="new-cars-item">
+							<div class="single-new-cars-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="new-cars-img">
+											<img src="assets/images/new-cars-model/ncm2.png" alt="img"/>
+										</div><!--/.new-cars-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="new-cars-txt">
+											<h2>Honda WR-V</h2>
+											<p class="new-cars-para2">
+												The Honda WR-V is a compact SUV known for its sporty design and versatility. 
+												It offers a spacious interior with advanced technology and efficient performance. 
+												Ideal for urban and adventure driving, the WR-V combines practicality with contemporary style.
+											</p>
+										</div><!--/.new-cars-txt-->	
+									</div><!--/.col-->
+								</div><!--/.row-->	
+							</div><!--/.single-new-cars-item-->
+						</div><!--/.new-cars-item-->
+						<div class="new-cars-item">
+							<div class="single-new-cars-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="new-cars-img">
+											<img src="assets/images/new-cars-model/ncm3.png" alt="img"/>
+										</div><!--/.new-cars-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="new-cars-txt">
+											<h2>Proton S50</h2>
+											<p class="new-cars-para2">
+												The Proton S50 is an upcoming sedan that combines advanced technology with sleek design, 
+												representing Proton’s commitment to modern automotive innovation. 
+												With its stylish exterior, spacious interior, and cutting-edge features, 
+												the S50 aims to deliver a superior driving experience.
+											</p>
+										</div><!--/.new-cars-txt-->	
+									</div><!--/.col-->
+								</div><!--/.row-->
+							</div><!--/.single-new-cars-item-->
+						</div><!--/.new-cars-item-->
+					</div><!--/#new-cars-carousel-->
+				</div><!--/.new-cars-content-->
+			</div><!--/.container-->
+
+		</section><!--/.new-cars-->
+		<!--new-cars end -->
+
+		<!--featured-cars start -->
+		<section id="featured-cars" class="featured-cars">
+			<div class="container">
+				<div class="section-header">
+					<br>
+					<h2>featured cars</h2>
+				</div><!--/.section-header-->
+				<div class="featured-cars-content">
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="single-featured-cars">
+								<div class="featured-img-box">
+									<div class="featured-cars-img">
+										<img src="assets/images/featured-cars/fc1.png" alt="cars">
+									</div>
+									<div class="featured-model-info">
+										<p>
+											Honda Civic Type R
+										</p>
+									</div>
+								</div>
+								<div class="featured-cars-txt">
+									<p>
+										Type R versions of the Civic typically feature a lightened and stiffened body, 
+										specially tuned engine, and upgraded brakes and chassis, 
+										and are offered only in five- or six-speed manual transmission.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="single-featured-cars">
+								<div class="featured-img-box">
+									<div class="featured-cars-img">
+										<img src="assets/images/featured-cars/fc2.png" alt="cars">
+									</div>
+									<div class="featured-model-info">
+										<p>
+											Proton X50 R3
+										</p>
+									</div>
+								</div>
+								<div class="featured-cars-txt">
+									<p>
+										The Proton X50 R3 20th Anniversary Edition features an exclusive R3 Accessories Package with a striking black design. 
+										It includes an R3 Aerokit and 18” Lightweight Alloy Wheels. 
+										This edition celebrates 20 years of PROTON’s motorsport heritage.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="single-featured-cars">
+								<div class="featured-img-box">
+									<div class="featured-cars-img">
+										<img src="assets/images/featured-cars/fc3.png" alt="cars">
+									</div>
+									<div class="featured-model-info">
+										<p>
+											Proton S50
+										</p>
+									</div>
+								</div>
+								<div class="featured-cars-txt">
+									<p>
+										The Proton S50 is an upcoming sedan that combines advanced technology with sleek design, 
+										representing Proton’s commitment to modern automotive innovation. 
+										With its stylish exterior, spacious interior, and cutting-edge features, 
+										the S50 aims to deliver a superior driving experience.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="single-featured-cars">
+								<div class="featured-img-box">
+									<div class="featured-cars-img">
+										<img src="assets/images/featured-cars/fc4.png" alt="cars">
+									</div>
+									<div class="featured-model-info">
+										<p>
+											Toyota C-HR
+										</p>
+									</div>
+								</div>
+								<div class="featured-cars-txt">
+									<p>
+										The Toyota C-HR is a compact crossover SUV that stands out with its bold, sporty design and advanced technology. 
+										It offers a dynamic driving experience and a high-quality, comfortable interior, making it ideal for those seeking both style and practicality.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.container-->
+
+		</section><!--/.featured-cars-->
+		<!--featured-cars end -->
+
+		<!--brand strat -->
+		<section id="brand" class="brand">
+			<div class="container">
+				<div class="brand-area">
+					<div class="owl-carousel owl-theme brand-item">
+						<div class="item">
+							<a href="{{ url_for('brand_cars', brand='perodua') }}">
+								<img src="{{ url_for('send_file', filename='logo/perodua.png') }}" alt="Perodua" />
+							</a>
+						</div>
+						<div class="item">
+							<a href="{{ url_for('brand_cars', brand='toyota') }}">
+								<img src="{{ url_for('send_file', filename='logo/toyota.png') }}" alt="Toyota" />
+							</a>
+						</div>
+						<div class="item">
+							<a href="{{ url_for('brand_cars', brand='honda') }}">
+								<img src="{{ url_for('send_file', filename='logo/honda.png') }}" alt="Honda" />
+							</a>
+						</div>
+						<div class="item">
+							<a href="{{ url_for('brand_cars', brand='proton') }}">
+								<img src="{{ url_for('send_file', filename='logo/proton.png') }}" alt="Proton" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--brand end -->
+
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="assets/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="assets/js/bootsnav.js"></script>
+
+		<!--owl.carousel.js-->
+        <script src="assets/js/owl.carousel.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="assets/js/custom.js"></script>
+        
+    </body>
+	
 </html>

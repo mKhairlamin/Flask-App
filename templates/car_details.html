@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ car['Brand'] }} {{ car['Name'] }} Details</title>
+    <link rel="shortcut icon" type="image/icon" href="assets/logo/logo.png"/><!-- website logo -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a; /* Very dark background */
+            color: #ccc; /* Light text color */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #333; /* Dark container background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #eee; /* Light heading color */
+        }
+        .car-details {
+            padding: 10px;
+        }
+        .car-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .car-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .car-details-table th, .car-details-table td {
+            padding: 10px;
+            border: 1px solid #555; /* Darker border color */
+        }
+        .car-details-table th {
+            width: 30%;
+            background-color: #444; /* Dark table header background */
+            color: #ccc; /* Light table header text color */
+        }
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-btn button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff; /* Light text color */
+            background-color: #007bff; /* Accent color for button */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-btn button:hover {
+            background-color: #0056b3; /* Darker accent color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ car['Brand'] }} {{ car['Name'] }}</h1>
+        <img class="car-image" src="{{ url_for('send_file', filename=car['Image']) }}" alt="{{ car['Name'] }}">
+        <div class="car-details">
+            <table class="car-details-table">
+                <tr>
+                    <th>OTR Price</th>
+                    <td>RM {{ car['Price (RM)'] }}</td>
+                </tr>
+                <tr>
+                    <th>Road Tax</th>
+                    <td>RM {{ car['Road_tax'] }} / year</td>
+                </tr>
+                <tr>
+                    <th>Total Displacement</th>
+                    <td>{{ car['Total Displacement (CC)'] }} CC</td>
+                </tr>
+                <tr>
+                    <th>Engine Type</th>
+                    <td>{{ car['Engine Type'] }}</td>
+                </tr>
+                <tr>
+                    <th>Boot Space Capacity</th>
+                    <td>{{ car['Luggage Capacity (L)'] }} L</td>
+                </tr>
+                <tr>
+                    <th>Fuel Tank Capacity</th>
+                    <td>{{ car['Fuel Tank Capacity (L)'] }} L</td>
+                </tr>
+                <tr>
+                    <th>Fuel Consumption</th>
+                    <td>{{ car['Fuel Consumption (KM/L)'] }} KM/L</td>
+                </tr>
+                <tr>
+                    <th>Car Type</th>
+                    <td>{{ car['Seats'] }}-seater</td>
+                </tr>
+                <tr>
+                    <th>Electric Power Steering</th>
+                    <td>{{ car['Electric Power Steering (EPS)'] }}</td>
+                </tr>
+                <tr>
+                    <th>Airbags</th>
+                    <td>{{ car['Airbags'] }}</td>
+                </tr>
+                <tr>
+                    <th>More Info</th>
+                    <td><a href="{{ car['Info'] }}" style="color: white;">Click Here</a></td>
+                </tr>
+               
+            </table>
+        </div>
+        <div class="back-btn">
+            <button onclick="window.history.back()">Back</button>
+        </div>
+    </div>
+</body>
+</html>

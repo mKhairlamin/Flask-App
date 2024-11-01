@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Recommendations</title>
+    <link rel="shortcut icon" type="image/icon" href="assets/logo/logo.png"/><!-- website logo -->
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url(assets/images/welcome-hero/background.jpg) no-repeat center center fixed;
+            background-size: cover;
+            color: #ccc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-buttons table {
+            width: 100%;
+        }
+
+        .tab-buttons th,
+        .tab-buttons td {
+            padding: 10px;
+            background-color: #333;
+            color: #ccc;
+        }
+
+        .tab-buttons button {
+            padding: 12px 24px;
+            border: none;
+            background-color: #444;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 25px;
+            transition: background-color 0.3s, color 0.3s;
+            color: #ccc;
+        }
+
+        .tab-buttons button.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .tab-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .car-details-table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            background-color: #1a1a1a;
+        }
+
+        .car-details-table th,
+        .car-details-table td {
+            border: 1px solid #555;
+            padding: 8px;
+        }
+
+        .car-details-table th {
+            background-color: #444;
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .car-box {
+            border: 1px solid #555;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .car-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .car-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .car-image:hover {
+            transform: scale(1.1);
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        .car-details p strong {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-btn button {
+            padding: 12px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .car-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-buttons button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .back-btn button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .tab-buttons table th,
+            .tab-buttons table td {
+                padding: 8px;
+            }
+
+            .tab-buttons {
+                gap: 10px;
+            }
+
+            .car-details p {
+                font-size: 1em;
+            }
+
+            .car-details p strong {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .tab-buttons button {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            .car-box {
+                padding: 10px;
+            }
+
+            .back-btn button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Recommendations</h1>
+
+        <div class="tab-buttons">
+            <table style="text-align: center;">
+                <tr>
+                    <th>By Salary</th>
+                    <th>By User Budget</th>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="tab-btn active" data-tab="cosine">Best Match</button>
+                        <button class="tab-btn" data-tab="monthly-payment">Monthly Payment</button>
+                    </td>
+                    <td>
+                        <button class="tab-btn" data-tab="desired">Best Match</button>
+                        <button class="tab-btn" data-tab="desired-payment">Monthly Payment</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="cosine" class="tab-content active">
+            <div class="table-container">
+                <table class="car-details-table">
+                    <tr>
+                        <th>Monthly Payment</th>
+                        <th>Total Months</th>
+                        <th>Deposit</th>
+                        <th>Interest Rate</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>RM {{ monthly_payment | round(2) }}</td>
+                        <td>{{ total_months }}</td>
+                        <td>{{ down_payment * 100 }} %</td>
+                        <td>{{ interest_payment }} %</td>
+                        <td>RM {{ (monthly_payment * total_months) | round(2) }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="car-grid">
+                {% for index, car in recommendations_cosine_similarity.iterrows() %}
+                <div class="car-box">
+                    <a href="/car/{{ car['ID'] }}">
+                        <img class="car-image" src="{{ url_for('send_file', filename=car['Image']) }}" alt="{{ car['Name'] }}">
+                    </a>
+                    <div class="car-details">
+                        <p><strong>{{ car['Brand'] }} {{ car['Name'] }}</strong></p><br>
+                        <p>Match: {{ car['Similarity'] }}%</p>
+                        <p>RM {{ (((car['Price (RM)'] + (interest_payment/100 * car['Price (RM)'] * (total_months/12))) 
+                            - (down_payment * car['Price (RM)'])) / total_months) | round(2) }}/month</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="desired" class="tab-content">
+            <div class="table-container">
+                <table class="car-details-table">
+                    <tr>
+                        <th>Desired Payment</th>
+                        <th>Total Months</th>
+                        <th>Deposit</th>
+                        <th>Interest Rate</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>RM {{ desired_payment | round(2) }}</td>
+                        <td>{{ total_months }}</td>
+                        <td>{{ down_payment * 100 }} %</td>
+                        <td>{{ interest_payment }} %</td>
+                        <td>RM {{ (desired_payment * total_months) | round(2) }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="car-grid">
+                {% for index, car in recommendations_desired.iterrows() %}
+                <div class="car-box">
+                    <a href="/car/{{ car['ID'] }}">
+                        <img class="car-image" src="{{ url_for('send_file', filename=car['Image']) }}" alt="{{ car['Name'] }}">
+                    </a>
+                    <div class="car-details">
+                        <p><strong>{{ car['Brand'] }} {{ car['Name'] }}</strong></p><br>
+                        <p>Match: {{ car['Similarity'] }}%</p>
+                        <p>RM {{ (((car['Price (RM)'] + (interest_payment/100 * car['Price (RM)'] * (total_months/12))) 
+                            - (down_payment * car['Price (RM)'])) / total_months) | round(2) }}/month</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="monthly-payment" class="tab-content">
+            <div class="table-container">
+                <table class="car-details-table">
+                    <tr>
+                        <th>Monthly Payment</th>
+                        <th>Total Months</th>
+                        <th>Deposit</th>
+                        <th>Interest Rate</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>RM {{ monthly_payment | round(2) }}</td>
+                        <td>{{ total_months }}</td>
+                        <td>{{ down_payment * 100 }} %</td>
+                        <td>{{ interest_payment }} %</td>
+                        <td>RM {{ (monthly_payment * total_months) | round(2) }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="car-grid">
+                {% for index, car in recommendations_monthly_payment.iterrows() %}
+                <div class="car-box">
+                    <a href="/car/{{ car['ID'] }}">
+                        <img class="car-image" src="{{ url_for('send_file', filename=car['Image']) }}" alt="{{ car['Name'] }}">
+                    </a>
+                    <div class="car-details">
+                        <p><strong>{{ car['Brand'] }} {{ car['Name'] }}</strong></p>
+                        <p>RM {{ (((car['Price (RM)'] + (interest_payment/100 * car['Price (RM)'] * (total_months/12))) 
+                            - (down_payment * car['Price (RM)'])) / total_months) | round(2) }}/month</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="desired-payment" class="tab-content">
+            <div class="table-container">
+                <table class="car-details-table">
+                    <tr>
+                        <th>Desired Payment</th>
+                        <th>Total Months</th>
+                        <th>Deposit</th>
+                        <th>Interest Rate</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>RM {{ desired_payment | round(2) }}</td>
+                        <td>{{ total_months }}</td>
+                        <td>{{ down_payment * 100 }} %</td>
+                        <td>{{ interest_payment }} %</td>
+                        <td>RM {{ (desired_payment * total_months) | round(2) }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="car-grid">
+                {% for index, car in recommendations_desired_amount.iterrows() %}
+                <div class="car-box">
+                    <a href="/car/{{ car['ID'] }}">
+                        <img class="car-image" src="{{ url_for('send_file', filename=car['Image']) }}" alt="{{ car['Name'] }}">
+                    </a>
+                    <div class="car-details">
+                        <p><strong>{{ car['Brand'] }} {{ car['Name'] }}</strong></p>
+                        <p>RM {{ (((car['Price (RM)'] + (interest_payment/100 * car['Price (RM)'] * (total_months/12))) 
+                            - (down_payment * car['Price (RM)'])) / total_months) | round(2) }}/month</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="back-btn">
+            <button onclick="window.history.back()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
